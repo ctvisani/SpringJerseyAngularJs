@@ -1,7 +1,6 @@
 package com.concretepage.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,34 +26,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.concretepage.entity.Person;
 import com.concretepage.service.IPersonService;
-import com.sun.jersey.api.view.Viewable;
 
 @Controller
 @Path("/info")
-//@RequestMapping("/info")
 public class PersonController {
 	
 	@Autowired
 	private IPersonService personService;
 
-////	@RequestMapping("/home")
-//	@GET
-//	@Path("/home")
-//	@Produces("text/html")
-//	public String home() {
-//		return "home";
-//	}
-////	public String home() {
-////		return "home";
-////	}
-
-	//@PersonTx
+	@PersonTx
 	@GET
 	@Path("/person/{id:[0-9]+}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getPersonById(@Context HttpServletRequest request, @PathParam("id") Integer id) {
 		Person person = personService.getPersonById(id);
-//		return new ResponseEntity<Person>(person, HttpStatus.OK);
 		return  Response.status(Status.OK).entity(person).build();
 	}
 
@@ -66,13 +51,6 @@ public class PersonController {
 		List<Person> list = personService.getAllPersons();
 		return Response.status(Status.OK).entity(list).build();
 	}
-
-//	@PersonTx
-//	@RequestMapping(value = "/person", method = RequestMethod.GET)
-//	public ResponseEntity<List<Person>> getAllPersons() {
-//		List<Person> list = personService.getAllPersons();
-//		return new ResponseEntity<List<Person>>(list, HttpStatus.OK);
-//	}
 
 	@POST
 	@Path("/person")
@@ -94,24 +72,6 @@ public class PersonController {
 
 		return Response.status(Status.OK).entity(person).build();
 	}
-
-	// @RequestMapping(value= "/person", method = RequestMethod.POST)
-	// public ResponseEntity<Object> addPerson(@RequestBody Person person,
-	// UriComponentsBuilder builder) {
-	// boolean flag = true;
-	// List<ValidationErrorMessage> result = new ArrayList<>();
-	// try {
-	// flag = personService.addPerson(person);
-	// } catch (ValidationException ex) {
-	// flag = false;
-	// result = ex.getViolations();
-	// }
-	// if (flag == false) {
-	// return new ResponseEntity<Object>(result, HttpStatus.BAD_REQUEST);
-	// }
-	//
-	// return new ResponseEntity<Object>(person, HttpStatus.OK);
-	// }
 
 	@PersonTx
 	@RequestMapping(value = "/person/{id}", method = RequestMethod.PUT)

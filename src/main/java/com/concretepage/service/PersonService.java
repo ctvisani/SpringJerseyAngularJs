@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.concretepage.controller.PersonTx;
-import com.concretepage.controller.PersonTxRequiresNew;
 import com.concretepage.controller.ValidationErrorMessage;
 import com.concretepage.controller.ValidationException;
 import com.concretepage.dao.IPersonDAO;

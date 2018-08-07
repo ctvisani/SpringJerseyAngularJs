@@ -20,7 +20,6 @@ public class DBConfig {
 	@Bean
 	@Autowired
 	public HibernateTemplate hibernateTemplate(SessionFactory sessionFactory) {
-		// return new HibernateTemplate(sessionFactory());
 		HibernateTemplate hibernateTemplate = new HibernateTemplate(sessionFactory);
 		return hibernateTemplate;
 	}
@@ -58,7 +57,6 @@ public class DBConfig {
 	@Bean
 	@Autowired
 	public HibernateTransactionManager hibTransMan(SessionFactory sessionFactory) {
-		// return new HibernateTransactionManager(sessionFactory());
 		HibernateTransactionManager htm = new HibernateTransactionManager();
 		htm.setSessionFactory(sessionFactory);
 		return htm;

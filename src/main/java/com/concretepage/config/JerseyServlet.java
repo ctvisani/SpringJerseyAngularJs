@@ -15,6 +15,11 @@ import javax.servlet.annotation.WebServlet;
     value = "true")
 	})
 public class JerseyServlet extends SpringServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 
 }
